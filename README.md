@@ -148,3 +148,6 @@ services:
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_KSQL_ENABLE: "false"
 ```
+
+Useful links
+- https://github.com/confluentinc/examples/blob/5.5.0-post/ccloud/connectors/submit_datagen_pageviews_config.sh
