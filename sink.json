@@ -17,9 +17,9 @@
         "errors.log.enable": true,
         "errors.log.include.messages": true,
         "transforms": "xmltojson",
-        "transforms.xmltojson.type": "com.brevanhoward.kafka.connect.smt.XmlToJson$Value",
+        "transforms.xmltojson.type": "com.brevanhoward.kafka.connect.smt.XmlExtractor$Value",
         "transforms.xmltojson.keys.delimiter.regex": "\\.",
         "transforms.xmltojson.xml.map.key": "xmlBlob",
-        "transforms.xmltojson.keys": "Customers.Customer.ContactName, Customers.Customer.ContactTitle, Customers.Customer.ContactName[ContactName], Customers.Customer.ContactTitle[ContactTitle],"
+        "transforms.xmltojson.keys": "Customers.Customer.ContactName<ContactName>,Customers.Customer.ContactTitle<ContactTitle>,Customers.Customer.ContactName,MxML.trades.trade.portfolios.portfolio.portfolioLabel<labels><.*><_[^_].*$>,MxML.trades.trade.portfolios.portfolio.portfolioLabel<books><.*><^[^_]+>,Customers.Customer"
     }
 }

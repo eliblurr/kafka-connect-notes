@@ -151,3 +151,10 @@ services:
 
 Useful links
 - https://github.com/confluentinc/examples/blob/5.5.0-post/ccloud/connectors/submit_datagen_pageviews_config.sh
+
+
+More notes
+docker run -d -h zookeeper --network kafka --env-file zookeeper.env confluentinc/cp-zookeeper
+docker run -d -h kafka --network kafka --env-file kafka.env confluentinc/cp-kafka   
+docker run -d -p 27017:27017 -h mongodb --network kafka mongo:latest
+docker cp XmlExtractor-1.0.0-SNAPSHOT.jar connector:/usr/share/confluent-hub-components
