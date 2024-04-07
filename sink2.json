@@ -1,0 +1,33 @@
+{
+    "name": "mongodb-sink-connector-with-transformer-2",
+    "config": {
+        "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+        "topics": "mkc",
+        "connection.uri": "mongodb://mongodb:27017",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": false,
+        "database": "datastore",
+        "collection": "sink",
+        "tasks.max": 2,
+        "errors.tolerance": "all",
+        "errors.deadletterqueue.topic.name": "bh-deadletterqueue",
+        "errors.deadletterqueue.topic.replication.factor": 1,
+        "errors.deadletterqueue.context.headers.enable": true,
+        "errors.log.enable": true,
+        "errors.log.include.messages": true,
+        "transforms": "HoistField,InsertField,TimestampConverter,XmlExtractor",
+        "transforms.HoistField.type": "org.apache.kafka.connect.transforms.HoistField$Value",
+        "transforms.HoistField.field": "xmlBlob",
+        "transforms.InsertField.type": "org.apache.kafka.connect.transforms.InsertField$Value",
+        "transforms.InsertField.timestamp.field": "created",
+        "transforms.TimestampConverter.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+        "transforms.TimestampConverter.field": "created",
+        "transforms.TimestampConverter.format": "yyyy-MM-dd HH:mm:ss",
+        "transforms.TimestampConverter.target.type": "Timestamp",
+        "transforms.XmlExtractor.type": "com.brevanhoward.kafka.connect.smt.XmlExtractor$Value",
+        "transforms.XmlExtractor.keys.delimiter.regex": "\\.",
+        "transforms.XmlExtractor.xml.map.key": "xmlBlob",
+        "transforms.XmlExtractor.keys": "MxML.trades.trade.portfolios.portfolio.portfolioLabel<portfolioLabel>,MxML.trades.trade.portfolios.portfolio.portfolioLabel<labels><.*><_[^_].*$>,MxML.trades.trade.portfolios.portfolio.portfolioLabel<books><.*><^[^_]+>"
+    }
+}
