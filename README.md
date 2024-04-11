@@ -157,4 +157,5 @@ More notes
 docker run -d -h zookeeper --network kafka --env-file zookeeper.env confluentinc/cp-zookeeper
 docker run -d -h kafka --network kafka --env-file kafka.env confluentinc/cp-kafka   
 docker run -d -p 27017:27017 -h mongodb --network kafka mongo:latest
+docker run -d -p 8083:8083 --name connector --network kafka --env-file connector.env confluentinc/cp-kafka-connect 
 docker cp XmlExtractor-1.0.0-SNAPSHOT.jar connector:/usr/share/confluent-hub-components
